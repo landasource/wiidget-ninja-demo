@@ -30,29 +30,27 @@ import controllers.I18nController;
 import controllers.InjectionExampleController;
 import controllers.PersonController;
 import controllers.UdpPingController;
-import controllers.UploadController;
 
 public class Routes implements ApplicationRoutes {
-    
-    private NinjaProperties ninjaProperties;
+
+    private final NinjaProperties ninjaProperties;
 
     @Inject
-    public Routes(NinjaProperties ninjaProperties) {
+    public Routes(final NinjaProperties ninjaProperties) {
         this.ninjaProperties = ninjaProperties;
 
     }
 
     /**
      * Using a (almost) nice DSL we can configure the router.
-     * 
-     * The second argument NinjaModuleDemoRouter contains all routes of a
-     * submodule. By simply injecting it we activate the routes.
-     * 
+     *
+     * The second argument NinjaModuleDemoRouter contains all routes of a submodule. By simply injecting it we activate the routes.
+     *
      * @param router
      *            The default router of this application
      */
     @Override
-    public void init(Router router) {
+    public void init(final Router router) {
 
         // /////////////////////////////////////////////////////////////////////
         // some default functions
@@ -85,7 +83,6 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/contactForm").with(ApplicationController.class, "contactForm");
         router.POST().route("/contactForm").with(ApplicationController.class, "postContactForm");
 
-        
         // /////////////////////////////////////////////////////////////////////
         // Lifecycle support
         // /////////////////////////////////////////////////////////////////////
@@ -113,13 +110,6 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/i18n").with(I18nController.class, "index");
         router.GET().route("/i18n/{language}").with(I18nController.class, "indexWithLanguage");
 
-        // /////////////////////////////////////////////////////////////////////
-        // Upload showcase
-        // /////////////////////////////////////////////////////////////////////
-        router.GET().route("/upload").with(UploadController.class, "upload");
-        router.POST().route("/uploadFinish").with(UploadController.class, "uploadFinish");
-        
-        
         //this is a route that should only be accessible when NOT in production
         // this is tested in RoutesTest
         if (!ninjaProperties.isProd()) {
