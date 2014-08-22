@@ -171,17 +171,17 @@
 
 	</dependencies>
 
-<!-- 	<repositories> -->
-<!-- 		<repository> -->
-<!-- 			<id>landasource-snapshots</id> -->
-<!-- 			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url> -->
-<!-- 		</repository> -->
+	<repositories>
+		<repository>
+			<id>landasource-snapshots</id>
+			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url>
+		</repository>
 
-<!-- 		<repository>		 -->
-<!-- 			<id>central</id> -->
-<!-- 			<name>Maven Repository Switchboard</name> -->
-<!-- 			<url>http://repo1.maven.org/maven2</url> -->
-<!-- 		</repository> -->
-<!-- 	</repositories> -->
+		<repository>		
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
 
 </project>
