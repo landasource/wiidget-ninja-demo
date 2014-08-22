@@ -16,7 +16,7 @@
 
 package conf;
 
-import org.landa.wiidget.ninja.WiidgetModule;
+import com.landasource.wiidget.ninja.WiidgetModule;
 
 import com.google.inject.AbstractModule;
 

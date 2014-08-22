@@ -2,7 +2,7 @@ package controllers;
 
 import models.Person;
 
-import org.landa.wiidget.library.format.Formatter;
+import com.landasource.wiidget.library.format.Formatter;
 
 public class PersonFormatter implements Formatter<Person> {
 

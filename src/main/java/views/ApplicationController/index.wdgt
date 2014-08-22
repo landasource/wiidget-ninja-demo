@@ -1,25 +1,25 @@
 
 
-import org.landa.wiidget.library.template.Template;
-import org.landa.wiidget.library.template.Part;
-import org.landa.wiidget.library.template.SimplePart;
-import org.landa.wiidget.library.template.Placeholder;
+import com.landasource.wiidget.library.template.Template;
+import com.landasource.wiidget.library.template.Part;
+import com.landasource.wiidget.library.template.SimplePart;
+import com.landasource.wiidget.library.template.Placeholder;
 
-import org.landa.wiidget.basewiidgets.Out;
-import org.landa.wiidget.library.html.Label;
-import org.landa.wiidget.library.html.CssFile;
-import org.landa.wiidget.library.html.JavaScriptFile;
+import com.landasource.wiidget.basewiidgets.Out;
+import com.landasource.wiidget.library.html.Label;
+import com.landasource.wiidget.library.html.CssFile;
+import com.landasource.wiidget.library.html.JavaScriptFile;
 
-import org.landa.wiidget.library.html.base.Div;
-import org.landa.wiidget.library.html.base.Ul;
-import org.landa.wiidget.library.html.base.Li;
-import org.landa.wiidget.library.html.base.Link;
-import org.landa.wiidget.library.html.base.Heading;
-import org.landa.wiidget.library.html.datatable.PageableDataTable;
-import org.landa.wiidget.library.html.datatable.LinkPaginator;
-import org.landa.wiidget.library.html.table.Column;
-import org.landa.wiidget.library.html.table.Header;
-import org.landa.wiidget.library.html.table.Footer;
+import com.landasource.wiidget.library.html.base.Div;
+import com.landasource.wiidget.library.html.base.Ul;
+import com.landasource.wiidget.library.html.base.Li;
+import com.landasource.wiidget.library.html.base.Link;
+import com.landasource.wiidget.library.html.base.Heading;
+import com.landasource.wiidget.library.html.datatable.PageableDataTable;
+import com.landasource.wiidget.library.html.datatable.LinkPaginator;
+import com.landasource.wiidget.library.html.table.Column;
+import com.landasource.wiidget.library.html.table.Header;
+import com.landasource.wiidget.library.html.table.Footer;
 import wiidget.WiidgetFactory;
 import wiidget.DataFactory;
 
@@ -44,7 +44,7 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 			"h2"{ Out(title); }
 		}
 			
-		/*$table : PageableDataTable(id="animals1", value = $data.getPageable(), cssClass="table table-striped table-hover"){
+		$table : PageableDataTable(id="animals1", value = $data.getPageable(), cssClass="table table-striped table-hover"){
 			
 			Header(colspan = 1){
 				Heading("Animals");				
@@ -54,20 +54,12 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 				LinkPaginator($table);
 			}
 						
-			Column(field = "name", header = "Név");
-			Column(field = "age", header = "Kora");
+			Column(field = "name", header = "Name");
+			Column(field = "age", header = "Age");
 			
-			Footer{
+			Footer(colspan = 2){
 				LinkPaginator($table);
 			}
-		}*/
-		
-		$table : PageableDataTable(id="animals2", value = $data.getPageable(), cssClass="table table-striped table-hover"){
-			
-			Column(field = "name", header = "Név");
-			Column(field = "age", header = "Kora");
-			
-			LinkPaginator(dataTable = $table, itemsPerPage = 5);		
 		}		
 		
 		

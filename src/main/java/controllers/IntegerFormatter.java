@@ -1,6 +1,6 @@
 package controllers;
 
-import org.landa.wiidget.library.format.Formatter;
+import com.landasource.wiidget.library.format.Formatter;
 
 public class IntegerFormatter implements Formatter<Integer> {
 

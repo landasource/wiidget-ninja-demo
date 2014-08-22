@@ -5,8 +5,8 @@ import java.util.List;
 
 import models.Person;
 
-import org.landa.wiidget.Wiidget;
-import org.landa.wiidget.library.html.table.Table;
+import com.landasource.wiidget.Wiidget;
+import com.landasource.wiidget.library.html.table.Table;
 
 public class WiidgetFactory extends Wiidget {
 

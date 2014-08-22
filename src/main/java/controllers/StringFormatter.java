@@ -1,6 +1,6 @@
 package controllers;
 
-import org.landa.wiidget.library.format.Formatter;
+import com.landasource.wiidget.library.format.Formatter;
 
 public class StringFormatter implements Formatter<String> {
 

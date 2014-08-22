@@ -32,8 +32,8 @@ import ninja.params.PathParam;
 import ninja.validation.Required;
 import ninja.validation.Validation;
 
-import org.landa.wiidget.library.format.Formatter;
-import org.landa.wiidget.util.DataMap;
+import com.landasource.wiidget.library.format.Formatter;
+import com.landasource.wiidget.util.DataMap;
 import org.slf4j.Logger;
 
 import com.google.common.collect.Maps;

@@ -1,16 +1,16 @@
 
-import org.landa.wiidget.library.template.Template;
-import org.landa.wiidget.library.template.Part;
-import org.landa.wiidget.library.template.Placeholder;
+import com.landasource.wiidget.library.template.Template;
+import com.landasource.wiidget.library.template.Part;
+import com.landasource.wiidget.library.template.Placeholder;
 
-import org.landa.wiidget.library.html.CssFile;
-import org.landa.wiidget.library.html.JavaScriptFile;
+import com.landasource.wiidget.library.html.CssFile;
+import com.landasource.wiidget.library.html.JavaScriptFile;
 
-import org.landa.wiidget.library.html.base.Div;
-import org.landa.wiidget.library.html.base.Ul;
-import org.landa.wiidget.library.html.base.Li;
-import org.landa.wiidget.library.html.base.Link;
-import org.landa.wiidget.library.html.base.Heading;
+import com.landasource.wiidget.library.html.base.Div;
+import com.landasource.wiidget.library.html.base.Ul;
+import com.landasource.wiidget.library.html.base.Li;
+import com.landasource.wiidget.library.html.base.Link;
+import com.landasource.wiidget.library.html.base.Heading;
 
 Template(value = "/views/layout/main.html", removePlaceholders = false){
 
@@ -29,12 +29,12 @@ Template(value = "/views/layout/main.html", removePlaceholders = false){
 					Link(value = "Wiidget demo", href="#", cssClass="brand");
 					
 					Ul(cssClass = "nav"){
-						Li(cssClass = "active"){
+						/*Li(cssClass = "active"){
 							Link(href="#", value="Home");
 						}
 						Li{
 							Link(href="#", value="Base wiidgets");
-						}
+						}*/
 					}
 				}
 			}	

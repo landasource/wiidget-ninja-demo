@@ -10,7 +10,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.landasource</groupId>
+	<groupId>com.landasource</groupId>
 	<artifactId>wiidget-ninja-demo</artifactId>
 	<packaging>war</packaging>
 
@@ -148,16 +148,16 @@
 
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>repo</id>
-			<url>https://github.com/landasource/maven-repo/raw/master/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+<!-- 	<distributionManagement> -->
+<!-- 		<repository> -->
+<!-- 			<id>repo</id> -->
+<!-- 			<url>https://github.com/landasource/maven-repo/raw/master/releases</url> -->
+<!-- 		</repository> -->
+<!-- 		<snapshotRepository> -->
+<!-- 			<id>snapshot-repo</id> -->
+<!-- 			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url> -->
+<!-- 		</snapshotRepository> -->
+<!-- 	</distributionManagement> -->
 
 	<dependencies>
 
@@ -182,14 +182,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.landasource</groupId>
+			<groupId>com.landasource</groupId>
 			<artifactId>wiidget-library</artifactId>
 			<version>0.1.0</version>
 		</dependency>
 
 
 		<dependency>
-			<groupId>org.landasource</groupId>
+			<groupId>com.landasource</groupId>
 			<artifactId>wiidget-ninja-module</artifactId>
 			<version>0.1.0</version>
 		</dependency>

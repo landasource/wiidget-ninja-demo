@@ -3,9 +3,9 @@ package wiidget;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.landa.wiidget.Wiidget;
-import org.landa.wiidget.library.html.datatable.ArrayListPageable;
-import org.landa.wiidget.library.html.datatable.Pageable;
+import com.landasource.wiidget.Wiidget;
+import com.landasource.wiidget.library.html.datatable.ArrayListPageable;
+import com.landasource.wiidget.library.html.datatable.Pageable;
 
 public class DataFactory extends Wiidget {
 
