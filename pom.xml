@@ -10,9 +10,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>org.landasource</groupId>
 	<artifactId>wiidget-ninja-demo</artifactId>
 	<packaging>war</packaging>
-	<groupId>wiidget-ninja-demo</groupId>
+
 	<name>ninja demo application</name>
 	<version>1.0-SNAPSHOT</version>
 
@@ -27,6 +28,34 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<!-- explicitly define maven-deploy-plugin after other to force exec 
+					order -->
+				<artifactId>maven-deploy-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -53,27 +82,29 @@
 					</scanTargetPatterns>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-dependency-plugin</artifactId>
-			  <version>2.3</version>
-			  <executions>
-				<execution>
-				  <phase>package</phase>
-				  <goals><goal>copy</goal></goals>
-				  <configuration>
-					<artifactItems>
-					  <artifactItem>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>jetty-runner</artifactId>
-						<version>7.5.4.v20111024</version>
-						<destFileName>jetty-runner.jar</destFileName>
-					  </artifactItem>
-					</artifactItems>
-				  </configuration>
-				</execution>
-			  </executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.mortbay.jetty</groupId>
+									<artifactId>jetty-runner</artifactId>
+									<version>7.5.4.v20111024</version>
+									<destFileName>jetty-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
@@ -91,6 +122,17 @@
 		</resources>
 
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>https://github.com/landasource/maven-repo/raw/master/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<dependencies>
 
@@ -115,18 +157,31 @@
 		</dependency>
 
 		<dependency>
-			<groupId>landa</groupId>
+			<groupId>org.landasource</groupId>
 			<artifactId>wiidget-library</artifactId>
 			<version>0.1.0</version>
 		</dependency>
 
 
 		<dependency>
-			<groupId>landa</groupId>
+			<groupId>org.landasource</groupId>
 			<artifactId>wiidget-ninja-module</artifactId>
 			<version>0.1.0</version>
 		</dependency>
 
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>landasource-snapshots</id>
+			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url>
+		</repository>
+
+<!-- 		<repository>		 -->
+<!-- 			<id>central</id> -->
+<!-- 			<name>Maven Repository Switchboard</name> -->
+<!-- 			<url>http://repo1.maven.org/maven2</url> -->
+<!-- 		</repository> -->
+	</repositories>
 
 </project>
