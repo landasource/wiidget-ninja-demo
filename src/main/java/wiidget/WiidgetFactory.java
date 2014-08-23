@@ -12,7 +12,7 @@ public class WiidgetFactory extends Wiidget {
 
     public Table table(final List<?> list, final String header) {
 
-        final Table table = this.getWiidgetFactory().createComponent(Table.class, data().set("value", list).set("header", header));
+        final Table table = this.getWiidgetFactory().createWiidget(Table.class, data().set("value", list).set("header", header));
 
         table.setCssClass("table table-striped table-hover");
 

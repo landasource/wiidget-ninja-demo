@@ -12,7 +12,7 @@ import com.landasource.wiidget.library.html.base.Li;
 import com.landasource.wiidget.library.html.base.Link;
 import com.landasource.wiidget.library.html.base.Heading;
 
-Template(value = "/views/layout/main.html", removePlaceholders = false){
+Template(value = "/layout/main.html", removePlaceholders = false){
 
 	Part("body"){
 
