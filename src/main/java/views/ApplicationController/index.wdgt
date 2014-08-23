@@ -39,11 +39,7 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 				Out("Hello raw wiidget");
 			}
 		}
-		
-		`title`{
-			"h2"{ Out(title); }
-		}
-			
+				
 		$table : PageableDataTable(id="animals1", value = $data.getPageable(), cssClass="table table-striped table-hover"){
 			
 			Header(colspan = 1){
@@ -63,6 +59,6 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 		}		
 		
 		
-		Label(value = m["hello"], rendered = flash_error ~ false);
+		Label(value = m["hello.world"], rendered = flash_error ~ false);
 	}	
 }

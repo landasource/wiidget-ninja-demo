@@ -10,12 +10,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.landasource</groupId>
 	<artifactId>wiidget-ninja-demo</artifactId>
 	<packaging>war</packaging>
-
-	<name>ninja demo application</name>
+	<groupId>com.landasource</groupId>
 	<version>1.0-SNAPSHOT</version>
+
+	<url>http://www.ninjaframework.org</url>
 
 	<licenses>
 		<license>
@@ -39,8 +39,11 @@
 	</developers>
 
 	<properties>
+		<ninja.version>3.0.3</ninja.version>
+		<jetty.version>9.2.1.v20140609</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 
 	<build>
 		<plugins>
@@ -48,45 +51,42 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.1</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
 			</plugin>
 
+
 			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.0</version>
 				<executions>
 					<execution>
-						<id>attach-sources</id>
-						<phase>deploy</phase>
+						<id>enforce-banned-dependencies</id>
 						<goals>
-							<goal>jar-no-fork</goal>
+							<goal>enforce</goal>
 						</goals>
+						<configuration>
+							<rules>
+								<bannedDependencies>
+									<excludes>
+										<exclude>commons-logging</exclude>
+									</excludes>
+								</bannedDependencies>
+							</rules>
+							<fail>true</fail>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
 			<plugin>
-				<!-- explicitly define maven-deploy-plugin after other to force exec 
-					order -->
-				<artifactId>maven-deploy-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.24</version>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 				<configuration>
 					<contextPath>/</contextPath>
 					<stopKey>stop</stopKey>
@@ -105,6 +105,45 @@
 							</excludes>
 						</scanTargetPattern>
 					</scanTargetPatterns>
+					<systemProperties>
+						<systemProperty>
+							<name>ninja.mode</name>
+							<value>dev</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+
+			<!-- Allows you to run Ninja via the SuperDevMode. -->
+			<!-- run "mvn ninja:run" on the command line for the best -->
+			<!-- development experience. -->
+			<plugin>
+				<groupId>org.ninjaframework</groupId>
+				<artifactId>ninja-maven-plugin</artifactId>
+				<version>${ninja.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>ninja.standalone.NinjaJetty</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 
@@ -123,7 +162,7 @@
 								<artifactItem>
 									<groupId>org.mortbay.jetty</groupId>
 									<artifactId>jetty-runner</artifactId>
-									<version>7.5.4.v20111024</version>
+									<version>8.1.14.v20131031</version>
 									<destFileName>jetty-runner.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
@@ -144,41 +183,49 @@
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
 		</resources>
 
 	</build>
 
-<!-- 	<distributionManagement> -->
-<!-- 		<repository> -->
-<!-- 			<id>repo</id> -->
-<!-- 			<url>https://github.com/landasource/maven-repo/raw/master/releases</url> -->
-<!-- 		</repository> -->
-<!-- 		<snapshotRepository> -->
-<!-- 			<id>snapshot-repo</id> -->
-<!-- 			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url> -->
-<!-- 		</snapshotRepository> -->
-<!-- 	</distributionManagement> -->
+
 
 	<dependencies>
 
 		<dependency>
-			<groupId>org.ninjaframework</groupId>
-			<artifactId>ninja-servlet</artifactId>
-			<version>3.3.1</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>tinymce-jquery</artifactId>
+			<version>3.4.9</version>
 		</dependency>
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.0.0</version>
 		</dependency>
+
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.172</version>
+		</dependency>
+
+		<!-- If you want to deploy to a war please -->
+		<!-- comment ninja-standalone dependency and -->
+		<!-- uncomment the dependency for ninja-servlet -->
+		<!-- <dependency> <groupId>org.ninjaframework</groupId> <artifactId>ninja-servlet</artifactId> 
+			<version>${ninja.version}</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.ninjaframework</groupId>
-			<artifactId>ninja-core-test</artifactId>
-			<version>1.6.0</version>
-			<scope>test</scope>
+			<artifactId>ninja-standalone</artifactId>
+			<version>${ninja.version}</version>
 		</dependency>
 
 		<dependency>
@@ -187,26 +234,21 @@
 			<version>0.1.0</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>com.landasource</groupId>
 			<artifactId>wiidget-ninja-module</artifactId>
 			<version>0.1.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.ninjaframework</groupId>
+			<artifactId>ninja-test-utilities</artifactId>
+			<version>${ninja.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>landasource-snapshots</id>
-			<url>https://github.com/landasource/maven-repo/raw/master/snapshots</url>
-		</repository>
 
-		<repository>
-			<id>central</id>
-			<name>Maven Repository Switchboard</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-	</repositories>
 
 </project>
