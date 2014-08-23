@@ -58,7 +58,5 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 			}
 		}		
 		
-		
-		Label(value = m["hello.world"], rendered = flash_error ~ false);
 	}	
 }
