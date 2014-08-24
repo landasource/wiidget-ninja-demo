@@ -249,6 +249,16 @@
 
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>oss-sonatype</id>
+			<url>https://oss.sonatype.org/service/local/repositories/releases/content/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 
 
 </project>
