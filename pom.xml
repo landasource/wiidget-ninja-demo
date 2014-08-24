@@ -13,7 +13,7 @@
 	<artifactId>wiidget-ninja-demo</artifactId>
 	<packaging>war</packaging>
 	<groupId>com.landasource</groupId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.1.1</version>
 
 	<url>http://www.ninjaframework.org</url>
 
@@ -231,13 +231,13 @@
 		<dependency>
 			<groupId>com.landasource</groupId>
 			<artifactId>wiidget-library</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.landasource</groupId>
 			<artifactId>wiidget-ninja-module</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
