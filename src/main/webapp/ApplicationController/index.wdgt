@@ -5,7 +5,7 @@ import com.landasource.wiidget.library.template.Part;
 import com.landasource.wiidget.library.template.SimplePart;
 import com.landasource.wiidget.library.template.Placeholder;
 
-import com.landasource.wiidget.basewiidgets.Out;
+import com.landasource.wiidget.commons.Out;
 import com.landasource.wiidget.library.html.Label;
 import com.landasource.wiidget.library.html.CssFile;
 import com.landasource.wiidget.library.html.JavaScriptFile;
@@ -22,7 +22,7 @@ import com.landasource.wiidget.library.html.table.Header;
 import com.landasource.wiidget.library.html.table.Footer;
 
 import components.pageableDataTable;
-
+import com.landasource.wiidget.library.util.LoopHelper;
 
 
 Template(value = "/layout/main.wdgt", removePlaceholders = true, messageVal = "From template"){
@@ -35,11 +35,18 @@ Template(value = "/layout/main.wdgt", removePlaceholders = true, messageVal = "F
 			
 		"div"(class="jumbotron"){
 			"h1"{
-				Out("Hello raw wiidget");
+				"Hello raw wiidget";
 			}
 		}
 				
-		pageableDataTable;
+		
+		
+		$loop  : LoopHelper;
+		foreach(index : $loop.loop(1, 2, 1)){
+			$table : pageableDataTable(id = "table-" + index, title = "Title of table #" + index);
+		} else {
+			"Empty list";
+		}
 		
 	}	
 }

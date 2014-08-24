@@ -17,8 +17,11 @@ Template(value = "/layout/main.html", removePlaceholders = false){
 	Part("body"){
 
 		CssFile("assets/css/bootstrap.css");
-		CssFile("assets/css/style.css");
+		CssFile("assets/css/bootstrap.theme.css");
+		
+		JavaScriptFile("https://code.jquery.com/jquery-2.1.1.min.js");
 		JavaScriptFile("assets/js/bootstrap.min.js");
+		JavaScriptFile("assets/js/linkPaginator.js");
 	
 		// navbar container
 		Div(cssClass = "container"){
@@ -44,7 +47,7 @@ Template(value = "/layout/main.html", removePlaceholders = false){
 			
 			Div(cssClass = "row"){				
 				Div(cssClass = "span4"){					
-					Heading(content = "Menü", level = 2);
+					Heading(content = "Menu", level = 2);
 				}
 				
 				Div(cssClass = "span8"){			
