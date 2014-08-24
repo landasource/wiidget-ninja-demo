@@ -15,7 +15,7 @@ public class DataFactory extends Wiidget {
 
     public Pageable<?> getPageable() {
 
-        final ArrayListPageable<Animal> arrayListPageable = new ArrayListPageable<Animal>(getAnimals(), 10);
+        final ArrayListPageable<Animal> arrayListPageable = new ArrayListPageable<Animal>(getAnimals());
 
         return arrayListPageable;
 
