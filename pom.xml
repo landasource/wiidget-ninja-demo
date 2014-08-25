@@ -249,6 +249,7 @@
 
 	</dependencies>
 
+	<!--
 	<repositories>
 		<repository>
 			<id>oss-sonatype</id>
@@ -258,6 +259,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	-->
 
 
 
