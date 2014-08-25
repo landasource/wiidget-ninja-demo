@@ -5,7 +5,7 @@ import com.landasource.wiidget.library.template.Part;
 import com.landasource.wiidget.library.template.SimplePart;
 import com.landasource.wiidget.library.template.Placeholder;
 
-import com.landasource.wiidget.basewiidgets.Out;
+import com.landasource.wiidget.commons.Out;
 import com.landasource.wiidget.library.html.Label;
 import com.landasource.wiidget.library.html.CssFile;
 import com.landasource.wiidget.library.html.JavaScriptFile;
@@ -20,13 +20,12 @@ import com.landasource.wiidget.library.html.datatable.LinkPaginator;
 import com.landasource.wiidget.library.html.table.Column;
 import com.landasource.wiidget.library.html.table.Header;
 import com.landasource.wiidget.library.html.table.Footer;
-import wiidget.WiidgetFactory;
-import wiidget.DataFactory;
 
-$factory : WiidgetFactory;
-$data : DataFactory;
+import components.pageableDataTable;
+import com.landasource.wiidget.library.util.LoopHelper;
 
-Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVal = "From template"){
+
+Template(value = "/layout/main.wdgt", removePlaceholders = true, messageVal = "From template"){
 	
 	SimplePart(name = "title", value = title);
 	
@@ -36,27 +35,18 @@ Template(value = "/views/layout/main.wdgt", removePlaceholders = true, messageVa
 			
 		"div"(class="jumbotron"){
 			"h1"{
-				Out("Hello raw wiidget");
+				"Hello raw wiidget";
 			}
 		}
 				
-		$table : PageableDataTable(id="animals1", value = $data.getPageable(), cssClass="table table-striped table-hover"){
-			
-			Header(colspan = 1){
-				Heading("Animals");				
-			}
-			
-			Header(colspan = 1){
-				LinkPaginator($table);
-			}
-						
-			Column(field = "name", header = "Name");
-			Column(field = "age", header = "Age");
-			
-			Footer(colspan = 2){
-				LinkPaginator($table);
-			}
-		}		
+		
+		
+		$loop  : LoopHelper;
+		foreach(index : $loop.loop(1, 2, 1)){
+			$table : pageableDataTable(id = "table-" + index, title = "Title of table #" + index);
+		} else {
+			"Empty list";
+		}
 		
 	}	
 }

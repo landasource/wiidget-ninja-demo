@@ -23,31 +23,33 @@ import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
 import org.hamcrest.CoreMatchers;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ApiControllerDocTesterTest extends NinjaDocTester {
 
-	String URL_INDEX = "/";
-	String URL_HELLO_WORLD_JSON = "/hello_world.json";
+    String URL_INDEX = "/";
+    String URL_HELLO_WORLD_JSON = "/hello_world.json";
 
-	@Test
-	public void testGetIndex() {
+    @Test
+    @Ignore
+    public void testGetIndex() {
 
-		final Response response = makeRequest(Request.GET().url(testServerUrl().path(URL_INDEX)));
+        final Response response = makeRequest(Request.GET().url(testServerUrl().path(URL_INDEX)));
 
-		assertThat(response.payload, containsString("<title>Wiidget demo page</title>"));
+        assertThat(response.payload, containsString("<title>Wiidget demo page</title>"));
 
-	}
+    }
 
-	@Test
-	public void testGetHelloWorldJson() {
+    @Test
+    public void testGetHelloWorldJson() {
 
-		final Response response = makeRequest(Request.GET().url(testServerUrl().path(URL_HELLO_WORLD_JSON)));
+        final Response response = makeRequest(Request.GET().url(testServerUrl().path(URL_HELLO_WORLD_JSON)));
 
-		final ApplicationController.SimplePojo simplePojo = response.payloadJsonAs(ApplicationController.SimplePojo.class);
+        final ApplicationController.SimplePojo simplePojo = response.payloadJsonAs(ApplicationController.SimplePojo.class);
 
-		assertThat(simplePojo.content, CoreMatchers.equalTo("Hello World! Hello Json!"));
+        assertThat(simplePojo.content, CoreMatchers.equalTo("Hello World! Hello Json!"));
 
-	}
+    }
 
 }

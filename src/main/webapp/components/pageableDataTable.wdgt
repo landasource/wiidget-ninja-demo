@@ -1,0 +1,27 @@
+import com.landasource.wiidget.library.html.datatable.PageableDataTable;
+import com.landasource.wiidget.library.html.datatable.LinkPaginator;
+import com.landasource.wiidget.library.html.table.Column;
+import com.landasource.wiidget.library.html.table.Header;
+import com.landasource.wiidget.library.html.table.Footer;
+import wiidget.DataFactory;
+
+$data : DataFactory;
+
+$table : PageableDataTable(id=id, value = $data.getPageable(), cssClass="table table-striped table-hover"){
+		
+	Header(colspan = 1){
+		"h1"(title ~ "No title specified");	
+	}
+				
+	Column(field = "name", header = "Name");
+	Column(field = "age", header = "Age");
+	
+	Footer(colspan = 2){
+		LinkPaginator(dataTable = $table, useAjax = true, pageSize = 15);
+		
+		"div"(class = "label"){
+			"Some legend value...";
+		}
+		
+	}
+}
