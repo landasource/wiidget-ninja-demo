@@ -1,6 +1,7 @@
 
 import com.landasource.wiidget.library.template.Template;
 import com.landasource.wiidget.library.template.Part;
+import com.landasource.wiidget.library.template.SimplePart;
 import com.landasource.wiidget.library.template.Placeholder;
 
 import com.landasource.wiidget.library.html.CssFile;
@@ -10,9 +11,14 @@ import com.landasource.wiidget.library.html.base.Div;
 import com.landasource.wiidget.library.html.base.Ul;
 import com.landasource.wiidget.library.html.base.Li;
 import com.landasource.wiidget.library.html.base.Link;
-import com.landasource.wiidget.library.html.base.Heading;
+import wiidget.Menu as menu;
+import wiidget.item;
 
 Template(value = "/layout/main.html", removePlaceholders = false){
+
+	//Set(name="title", value = title ~ "Wiidget demo");
+	SimplePart(name = "title", value = title ~ "Wiidget demo");
+	
 
 	Part("body"){
 
@@ -24,33 +30,39 @@ Template(value = "/layout/main.html", removePlaceholders = false){
 		JavaScriptFile("assets/js/linkPaginator.js");
 	
 		// navbar container
-		Div(cssClass = "container"){
-			
-			Div(cssClass = "navbar"){
-				Div(cssClass = "navbar-inner"){
-					
-					Link(value = "Wiidget demo", href="#", cssClass="brand");
-					
-					Ul(cssClass = "nav"){
-						/*Li(cssClass = "active"){
-							Link(href="#", value="Home");
-						}
-						Li{
-							Link(href="#", value="Base wiidgets");
-						}*/
-					}
-				}
-			}	
+		"div"(class="navbar navbar-default", role="navigation"){
+		
+			"div"(class="container-fluid"){
+				"div"(class="navbar-header"){
+					"button"(type="button", class="navbar-toggle", "data-toggle"="collapse", "data-target"="#bs-example-navbar-collapse-4"){
+			            "span"(class="sr-only"){"Toggle navigation";}
+			            "span"(class="icon-bar");
+			            "span"(class="icon-bar");
+			            "span"(class="icon-bar");
+			       }
+			       "a"(class = "navbar-brand", href="#"){ "Wiidget language showcase"; }
+				}	
+			}
+		
 		}
 		
+		// content part
 		Div(cssClass = "container"){
 			
 			Div(cssClass = "row"){				
-				Div(cssClass = "span4"){					
-					Heading(content = "Menu", level = 2);
+				Div(cssClass = "col-md-4"){					
+					// Menu
+					
+					menu{
+						item(value = "Menu");
+						item(link = "/index", value = "Home");					
+						item(link = "/table", value = "Pageable table");
+					}
+					
+					// end of menu
 				}
 				
-				Div(cssClass = "span8"){			
+				Div(cssClass = "col-md-8"){			
 					Placeholder("body");			
 				}
 			}		

@@ -1,17 +1,20 @@
 import com.landasource.wiidget.library.template.Template;
 import com.landasource.wiidget.library.template.Part;
 import com.landasource.wiidget.library.template.SimplePart;
+import com.landasource.wiidget.commons.Set;
 
 import wiidget.WiidgetCodeViewer as codeview;
-import ApplicationController.components.index;
 
 
-Template(value = "/layout/main.wdgt", removePlaceholders = true, messageVal = "From template"){
+import ApplicationController.components.table;
+
+Template(value = "/layout/main.wdgt", removePlaceholders = true){
 	
-	SimplePart(name = "title", value = title);
+		
 	
 	Part("body"){
 			
-		codeview(wiidgetResource = index);		
+		codeview(wiidgetResource = table, id = "pageable-table", title = "Table title");
+		
 	}	
 }

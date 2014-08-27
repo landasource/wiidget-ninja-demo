@@ -1,0 +1,18 @@
+import com.landasource.wiidget.library.template.Template;
+import com.landasource.wiidget.library.template.Part;
+import com.landasource.wiidget.library.template.SimplePart;
+import com.landasource.wiidget.library.template.Placeholder;
+
+
+Template(value = "/layout/main.wdgt", removePlaceholders = true){
+	SimplePart(name = "title", value = "Server Error");
+	
+	Part("body"){
+			"h1"{
+				"Server error";
+			}
+			"p"{
+				`exception`;
+			}		
+	}
+}
