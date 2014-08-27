@@ -26,7 +26,7 @@ public class ApplicationController {
 
     public Result index() {
 
-        return Results.html().render("title", "Wiidget demo page");
+        return Results.html().render("title", "Wiidget showcase");
 
     }
 
