@@ -17,9 +17,9 @@ $table : PageableDataTable(id=id, value = $data.getPageable(), cssClass="table t
 	Column(field = "age", header = "Age");
 	
 	Footer(colspan = 2){
-		LinkPaginator(dataTable = $table, useAjax = true, pageSize = 15);
+		LinkPaginator(dataTable = $table, useAjax = true, pageSize = 10);
 		
-		"div"(class = "label"){
+		"div"(class = "help-block"){
 			"Some legend value...";
 		}
 		

@@ -24,24 +24,29 @@ import com.google.inject.Singleton;
 @Singleton
 public class ApplicationController {
 
-	public Result index() {
+    public Result index() {
 
-		return Results.html().render("title", "Wiidget demo page");
+        return Results.html().render("title", "Wiidget demo page");
 
-	}
+    }
 
-	public Result helloWorldJson() {
+    public Result table() {
 
-		final SimplePojo simplePojo = new SimplePojo();
-		simplePojo.content = "Hello World! Hello Json!";
+        return Results.html();
+    }
 
-		return Results.json().render(simplePojo);
+    public Result helloWorldJson() {
 
-	}
+        final SimplePojo simplePojo = new SimplePojo();
+        simplePojo.content = "Hello World! Hello Json!";
 
-	public static class SimplePojo {
+        return Results.json().render(simplePojo);
 
-		public String content;
+    }
 
-	}
+    public static class SimplePojo {
+
+        public String content;
+
+    }
 }
