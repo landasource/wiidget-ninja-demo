@@ -42,6 +42,7 @@
 		<ninja.version>3.0.3</ninja.version>
 		<jetty.version>9.2.1.v20140609</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tomcat.deploy.url>http://localhost:8080/manager/text</tomcat.deploy.url>
 	</properties>
 
 
@@ -249,18 +250,42 @@
 
 	</dependencies>
 
-	<!--
-	<repositories>
-		<repository>
-			<id>oss-sonatype</id>
-			<url>https://oss.sonatype.org/service/local/repositories/releases/content/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	-->
+	<!-- <repositories> <repository> <id>oss-sonatype</id> <url>https://oss.sonatype.org/service/local/repositories/releases/content/</url> 
+		<snapshots> <enabled>true</enabled> </snapshots> </repository> </repositories> -->
 
+
+	<profiles>
+		<profile>
+			<id>tomcat-deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>						
+						<configuration>
+							<!-- Tomcat 7 has a different manager path - text - than other versions -->
+							<url>${tomcat.deploy.url}</url>
+							<!-- Refer to the server settings in your ~/.m2/settings.xml -->
+							<server>dev-tomcat</server>
+							<path>/wiidget-demo</path>
+						</configuration>
+					</plugin>
+				</plugins>
+
+				<pluginManagement>
+					<plugins>						
+						<plugin>
+							<groupId>org.apache.tomcat.maven</groupId>
+							<artifactId>tomcat7-maven-plugin</artifactId>
+							<version>2.0</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+
+		</profile>
+
+	</profiles>
 
 
 </project>
