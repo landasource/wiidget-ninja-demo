@@ -269,6 +269,7 @@
 							<!-- Refer to the server settings in your ~/.m2/settings.xml -->
 							<server>dev-tomcat</server>
 							<path>/wiidget-demo</path>
+							<update>true</update>
 						</configuration>
 					</plugin>
 				</plugins>
