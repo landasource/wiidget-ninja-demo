@@ -42,7 +42,7 @@
 		<ninja.version>3.0.3</ninja.version>
 		<jetty.version>9.2.1.v20140609</jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tomcat.deploy.url>http://localhost:8080/manager/text</tomcat.deploy.url>
+		<tomcat.deploy.url>http://localhost:80/manager/text</tomcat.deploy.url>
 		<wiidget.version>0.1.2</wiidget.version>
 	</properties>
 
