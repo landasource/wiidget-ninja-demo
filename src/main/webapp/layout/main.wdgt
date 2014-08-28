@@ -28,6 +28,14 @@ Template(value = "/layout/main.html", removePlaceholders = false){
 		JavaScriptFile("https://code.jquery.com/jquery-2.1.1.min.js");
 		JavaScriptFile("assets/js/bootstrap.min.js");
 		JavaScriptFile("assets/js/linkPaginator.js");
+		
+		// github fork
+		"a"(href="http://github.com/landasource/wiidget-core"){
+      		"img"(
+      			style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;",
+      		 	src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png",
+      		 	alt="Fork me on GitHub");
+    	}
 	
 		// navbar container
 		"div"(class="navbar navbar-default", role="navigation"){
@@ -42,6 +50,18 @@ Template(value = "/layout/main.html", removePlaceholders = false){
 			       }
 			       "a"(class = "navbar-brand", href="#"){ "Wiidget language showcase"; }
 				}	
+				
+				"ul"(class="nav navbar-nav navbar-left"){
+        			"li"{
+        				"a"(href="https://www.codeship.io/projects/32088"){
+        					"img"(
+        						src="https://camo.githubusercontent.com/e6531134f50d4b02ad3335bf8b665aec84501193/68747470733a2f2f7777772e636f6465736869702e696f2f70726f6a656374732f66336261393734302d306266662d303133322d386433382d3132323661336131623264622f737461747573",
+        					 	alt="Codeship Status for landasource/wiidget-ninja-demo",
+        					 	"data-canonical-src"="https://www.codeship.io/projects/f3ba9740-0bff-0132-8d38-1226a3a1b2db/status",
+        					 	style="max-width:100%;");
+        				}
+        			}        			
+        		}
 			}
 		
 		}
